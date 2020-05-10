@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "codellion-connect",
+  "private_key_id": "706a02bc2be9f9d896a0c229e885e822b59369d3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCQNX3iEgQefXEw\nw35kFZb0hoC/lrU7Mu6KSMtd92fzS+/7yELtmGmAVulDR6P0uyTPVOwWVaJPQMRG\nu2uJpNL068o17A6ydU94a2Z3JRv5OGm/0h3gdtRaNMEmjtQnaJnCsJBP6k8gMefh\nlDaECTNK2f5Evo03yjlVlOcsSrloDk/7uzLj+l+yH4DZaO0Iy7sHZ5V8gZAfPaah\njA2b5BUVmg+kJDnnSHvtUrgXgDima4TDnHMj2tsaT/s4DQ5WwKIsZIsCuKxGizX5\ntUzf69uHey9AbrJPJndqRnDb6Pm23YmLgtXxffQQ43BuIDDCQMTzOo99lGCL3X5L\nTiqZz1zbAgMBAAECggEARaAuCSqdpoL2VY7txTDPU3xlSRtgoRZ0KXwABHxhSgyN\n78i+16xQs9BCi2NZe92nZhsgaaAq34zrtyLiRvC3kd0OIn64kd0l44QnUrsuCGP+\nWsj999Qnru3tm8o2EFjmdCN/abY9QdQWmslOkO1IQImDxHkkAZ23lORxwObLIbud\nm+UyP+G+7ydzzYx/DfiGSnUOb+/uMKqYduGIBXae4tSXl+Dzg3+j+kXk9UVuXNMF\nyXKED/60OfGBN4eLWQMFpKecXmPqUKma23War25tg22zQRmBwHooLgOWs6/h8seu\ndNtBjNuxn86R8OvhCPi1OcuVSuSGIiRPG6ASrffqMQKBgQDITarAECOQDPlzp4mh\nv5aDobP2N+4RqF/5z7PNFx6leJg4NJAwBc3XTVSFQnrO87auWmsG5/S7XjmKIZME\nMXxbINo/GQ2t5E7fK0SQ+bqLB2okWP/gyFOa50E+3lS2ht5pCgPE/sTp6BZWRcHi\nPFgbx5a4sgHkf1Y5WWitZwjBXwKBgQC4TtDz+cidHuQ8TkzFIBRA512QcCHrGVEq\nhKUlId4b9jvMbc9lQFry3GXT/FZ/vAw+FDU2jrDnHLDIfUTDvMhoDpaaHZtTIqD0\n4uv70nFZ71mPd/zt9PPVPsEh0Lye8dkoAm3Yp0bcyrT6cm4uQFD6cZWCkbG0pRA3\nJJ1Jb1YqBQKBgDOSm8Y74Ywzav72Qh+dXrmhpt5cZDWzrpJ5ggfqTf+43yiJkB5t\nQCSRSpPNHCWw5nZZ3Xi3vHGJvzLrlhjcTPKBsO/SGY2OXShk0ZCqW/dz/0ZAjBFq\nQux9YnU3dYRRkW5mH7ZXCohXM3kfGN6RPvZYG1yOqKIWjzLQ7HzJLJ3tAoGAL/0V\nmvDms0Jf2vPoOUto+p1DV2Ba9IPbBl8TQN/YnR834rqUzaA8DhAk01VYkFm+Nku8\nrz/n/8UQoqM7TFvTMoTZ4bbjwnm5vwl2uFLLAMe5Ygmz6aFl+5gjYVKgSiJekHRR\ndZ/Ya5S8GpnA5noIm60HaL/WrVptJm56Jay/mqECgYEAiA0v2JSTksDA1vzCTItt\n83GJ44tSliUAVkVkMt/KOg7C0GnU8Dv6Q11mFsnHhQ9TpThWw0oN4VQg111GQW5o\nMsgYfGJE0Ut63WIOhmUCnt3ZQv20h/MTTvW8fk6apzoh9dX8tlP23BdpZ/XlNoz3\nO5R0pY8xnM+RDokE4JjGM2g=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-z0xii@codellion-connect.iam.gserviceaccount.com",
+  "client_id": "101510739958984991448",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-z0xii%40codellion-connect.iam.gserviceaccount.com"
+}
