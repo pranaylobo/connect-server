@@ -10,7 +10,10 @@ const delay = require('delay');
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./admin.json");
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
+var clients = {}; 
  var pass,email;
 
  admin.initializeApp({
@@ -63,6 +66,26 @@ let sess;
     res.send("Hello server");
  })
 
+ io.on("connection", function (client) {  
+  client.on("join", function(name){
+    console.log("Joined: " + name);
+      clients[client.id] = name;
+      client.emit("update", "You have connected to the server.");
+      client.broadcast.emit("update", name + " has joined the server.")
+  });
+
+  client.on("send", function(msg){
+    console.log("Message: " + msg);
+      client.broadcast.emit("chat", clients[client.id], msg);
+  });
+
+  client.on("disconnect", function(){
+    console.log("Disconnect");
+      io.emit("update", clients[client.id] + " has left the server.");
+      delete clients[client.id];
+  });
+});
+
 
 app.post('/login',function(req,res)
 {
@@ -86,6 +109,25 @@ app.post('/login',function(req,res)
       
      
 });
+app.get('/session',function(req,res){
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("yes")
+        res.json({
+          message:"sucessfull"
+        })
+      } else {
+        console.log("no")
+  
+        res.json({
+          message:"failed"
+        })
+      }
+    });
+  
+    })
+
+
 
 
 
