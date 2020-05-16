@@ -33,10 +33,16 @@ var clients = {};
   
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  var cities = [];
+
+
+
+  
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://alexajovo-c6937.web.app');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -66,25 +72,57 @@ let sess;
     res.send("Hello server");
  })
 
- io.on("connection", function (client) {  
-  client.on("join", function(name){
-    console.log("Joined: " + name);
-      clients[client.id] = name;
-      client.emit("update", "You have connected to the server.");
-      client.broadcast.emit("update", name + " has joined the server.")
-  });
 
-  client.on("send", function(msg){
-    console.log("Message: " + msg);
-      client.broadcast.emit("chat", clients[client.id], msg);
-  });
 
-  client.on("disconnect", function(){
-    console.log("Disconnect");
-      io.emit("update", clients[client.id] + " has left the server.");
-      delete clients[client.id];
+ app.get('/getdata',function(req,res)
+ {
+    
+  // res.sendFile('index.html');
+  let query = db.collection('issues').where('email', '==', 'khemagarwal1@gmail.com');
+
+let observer = query.onSnapshot(querySnapshot => {
+
+  querySnapshot.forEach(function(doc) {
+      cities.push(doc.data().topic);
+
   });
+  console.log("Current cities in CA: ", cities.join(", "));
+ 
+  // ...
+}, err => {
+  console.log(`Encountered error: ${err}`);
 });
+    res.json({
+      message:cities.join(", ")
+    })
+ })
+
+ 
+app.post('/getname',function(req,res)
+ {
+    
+  // res.sendFile('index.html');
+    console.log("hllo")
+
+   
+
+      let cityRef = db.collection('Customers').doc(req.body.email);
+      let getDoc = cityRef.get()
+        .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!');
+          } else {
+            console.log('Document data:', doc.data().Name);
+            res.json({
+              message:doc.data().Name
+            })
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err);
+        });
+       })
+      
 
 
 app.post('/login',function(req,res)
@@ -126,9 +164,6 @@ app.get('/session',function(req,res){
     });
   
     })
-
-
-
 
 
 
