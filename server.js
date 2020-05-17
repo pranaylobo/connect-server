@@ -34,7 +34,6 @@ var clients = {};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  var cities = [];
 
 
 
@@ -77,24 +76,32 @@ let sess;
  app.get('/getdata',function(req,res)
  {
     
+ var cities = [];
+
+
   // res.sendFile('index.html');
-  let query = db.collection('issues').where('email', '==', 'khemagarwal1@gmail.com');
+  let citiesRef = db.collection('issues');
+let query = citiesRef.where('email', '==', "khemagarwal1@gmail.com").get()
+  .then(snapshot => {
+    if (snapshot.empty) {
+      console.log('No matching documents.');
+      return;
+    }  
 
-let observer = query.onSnapshot(querySnapshot => {
-
-  querySnapshot.forEach(function(doc) {
+    snapshot.forEach(doc => {
+      console.log(doc.id, '=>', doc.data().topic);
       cities.push(doc.data().topic);
-
-  });
-  console.log("Current cities in CA: ", cities.join(", "));
- 
-  // ...
-}, err => {
-  console.log(`Encountered error: ${err}`);
-});
+    });
+   
     res.json({
-      message:cities.join(", ")
+      message:cities
     })
+  })
+  .catch(err => {
+    console.log('Error getting documents', err);
+  });
+
+    
  })
 
  
