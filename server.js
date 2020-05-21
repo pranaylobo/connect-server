@@ -41,7 +41,7 @@ var clients = {};
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Origin', 'https://alexajovo-c6937.web.app');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -72,8 +72,23 @@ let sess;
  })
 
 
+ app.get('/signout',function(req,res)
+ {
+    
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    res.json({
+      message:"sucessfull"
+    })
+  }).catch(function(error) {
+    // An error happened.
+  });
+  // res.sendFile('index.html');
+ })
 
- app.get('/getdata',function(req,res)
+
+
+ app.post('/getdata',function(req,res)
  {
     
  var cities = [];
@@ -81,7 +96,7 @@ let sess;
 
   // res.sendFile('index.html');
   let citiesRef = db.collection('issues');
-let query = citiesRef.where('email', '==', "khemagarwal1@gmail.com").get()
+let query = citiesRef.where('email', '==', req.body.email).get()
   .then(snapshot => {
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -155,20 +170,18 @@ app.post('/login',function(req,res)
      
 });
 app.get('/session',function(req,res){
-  firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log("yes")
-        res.json({
-          message:"sucessfull"
-        })
-      } else {
-        console.log("no")
-  
-        res.json({
-          message:"failed"
-        })
-      }
-    });
+
+  var user = firebase.auth().currentUser;
+var name, email, photoUrl, uid, emailVerified;
+
+if (user != null) {
+  email = user.email;
+  console.log("dddd",email);
+  res.json({
+    message:email
+  })
+                  // you have one. Use User.getToken() instead.
+}
   
     })
 
